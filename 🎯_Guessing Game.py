@@ -1,5 +1,8 @@
 import streamlit as st
 import random 
+import streamlit as st
+from openai import OpenAI, AuthenticationError, OpenAIError
+import sys
 
 st.set_page_config(
     page_title="Guessing Game",
@@ -119,6 +122,58 @@ elif st.session_state.game_mode == "questions":
             else:
                 st.warning(f"Wrong! The number was {st.session_state.number}!")
 
+
+st.set_page_config(page_title="Talk to AI", page_icon="🤖")
+sys.stdout.reconfigure(encoding='utf-8')
+
+# ── ask for API Key, stop if not yet provided  ────────────────────────────────────────────
+with st.sidebar:
+    api_key = st.text_input(
+        "UOS AI API-Key",
+        type="password",
+        key="uos_api_key",
+        placeholder="sk-...",
+    ).strip()
+how to 
+if not api_key:
+    st.info("Please enter your Uni Osnabrück API key. If you don't have one, you can obtain it from https://ai-keys.uni-osnabrueck.de.")
+    st.stop()
+
+# pass the entered key
+client = OpenAI(
+    base_url="https://litellm.uni-osnabrueck.de/v1",
+    api_key=api_key
+)
+
+# ── Main program logic starts here ────────────────────
+st.title("Talk to AI")
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+prompt = st.text_area("Your Question")
+
+if st.button("Submit", disabled=not prompt.strip()):
+    try:
+        st.session_state.messages.append({"role": "user", "content": prompt})
+
+        with st.spinner("Answer is being created …"):
+            response = client.chat.completions.create(
+                model="google/gemma-4-E4B-it",
+                messages=st.session_state.messages,
+            )
+
+        answer = response.choices[0].message.content
+        st.session_state.messages.append({"role": "assistant", "content": answer})
+        st.write(answer)
+
+    except AuthenticationError:
+        st.error("API was not accepted. Please check it.")
+
+    except OpenAIError:
+        st.error(
+            "AI API request failed. Please check it and try again. "
+        )
 
 #TODO s for me: 
 #Implement a question database 
