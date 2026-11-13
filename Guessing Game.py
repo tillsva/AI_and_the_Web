@@ -1,7 +1,7 @@
 import streamlit as st
 import random 
 import streamlit as st
-from openai import OpenAI, AuthenticationError, OpenAIError
+#from openai import OpenAI, AuthenticationError, OpenAIError
 import sys
 
 st.set_page_config(
@@ -90,6 +90,7 @@ elif st.session_state.game_mode == "questions":
 
     question = "How many residents does Osnabrück have?"
     answer = 166277
+    
     st.write(question)
 
     
@@ -120,64 +121,64 @@ elif st.session_state.game_mode == "questions":
                 st.success("Correct! You won!")
                 st.balloons()
             else:
-                st.warning(f"Wrong! The number was {st.session_state.number}!")
+                st.warning(f"Wrong! The number was {answer}!")
 
 
-st.set_page_config(page_title="Talk to AI", page_icon="🤖")
-sys.stdout.reconfigure(encoding='utf-8')
+#st.set_page_config(page_title="Talk to AI", page_icon="🤖")
+#sys.stdout.reconfigure(encoding='utf-8')
 
 # ── ask for API Key, stop if not yet provided  ────────────────────────────────────────────
-with st.sidebar:
-    api_key = st.text_input(
-        "UOS AI API-Key",
-        type="password",
-        key="uos_api_key",
-        placeholder="sk-...",
-    ).strip()
-how to 
-if not api_key:
-    st.info("Please enter your Uni Osnabrück API key. If you don't have one, you can obtain it from https://ai-keys.uni-osnabrueck.de.")
-    st.stop()
+# with st.sidebar:
+#     api_key = st.text_input(
+#         "UOS AI API-Key",
+#         type="password",
+#         key="uos_api_key",
+#         placeholder="sk-...",
+#     ).strip()
+# #how to 
+# if not api_key:
+#     st.info("Please enter your Uni Osnabrück API key. If you don't have one, you can obtain it from https://ai-keys.uni-osnabrueck.de.")
+#     st.stop()
 
-# pass the entered key
-client = OpenAI(
-    base_url="https://litellm.uni-osnabrueck.de/v1",
-    api_key=api_key
-)
+# # pass the entered key
+# client = OpenAI(
+#     base_url="https://litellm.uni-osnabrueck.de/v1",
+#     api_key=api_key
+# )
 
-# ── Main program logic starts here ────────────────────
-st.title("Talk to AI")
+# # ── Main program logic starts here ────────────────────
+# st.title("Talk to AI")
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# if "messages" not in st.session_state:
+#     st.session_state.messages = []
 
-prompt = st.text_area("Your Question")
+# prompt = st.text_area("Your Question")
 
-if st.button("Submit", disabled=not prompt.strip()):
-    try:
-        st.session_state.messages.append({"role": "user", "content": prompt})
+# if st.button("Submit", disabled=not prompt.strip()):
+#     try:
+#         st.session_state.messages.append({"role": "user", "content": prompt})
 
-        with st.spinner("Answer is being created …"):
-            response = client.chat.completions.create(
-                model="google/gemma-4-E4B-it",
-                messages=st.session_state.messages,
-            )
+#         with st.spinner("Answer is being created …"):
+#             response = client.chat.completions.create(
+#                 model="google/gemma-4-E4B-it",
+#                 messages=st.session_state.messages,
+#             )
 
-        answer = response.choices[0].message.content
-        st.session_state.messages.append({"role": "assistant", "content": answer})
-        st.write(answer)
+#         answer = response.choices[0].message.content
+#         st.session_state.messages.append({"role": "assistant", "content": answer})
+#         st.write(answer)
 
-    except AuthenticationError:
-        st.error("API was not accepted. Please check it.")
+#     except AuthenticationError:
+#         st.error("API was not accepted. Please check it.")
 
-    except OpenAIError:
-        st.error(
-            "AI API request failed. Please check it and try again. "
-        )
+#     except OpenAIError:
+#         st.error(
+#             "AI API request failed. Please check it and try again. "
+#         )
 
-#TODO s for me: 
-#Implement a question database 
-#Implement a username form and stats database 
+# #TODO s for me: 
+# #Implement a question database 
+# #Implement a username form and stats database 
 
 
 
