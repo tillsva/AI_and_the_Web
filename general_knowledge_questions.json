@@ -1,0 +1,508 @@
+{
+    "questions": [
+        {
+            "question": "Is the Earth the third planet from the Sun?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "Does the Moon produce its own light?",
+            "answer": "no",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "What is the chemical symbol for gold?",
+            "answer": "Au",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "How many legs does an adult spider have?",
+            "answer": "8",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "What gas do plants absorb from the atmosphere during photosynthesis?",
+            "answer": "carbon dioxide",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "Is water made of hydrogen and oxygen?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "What is the largest organ of the human body?",
+            "answer": "skin",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "At what temperature does water freeze at standard atmospheric pressure, in Celsius?",
+            "answer": "0",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "What is the center of an atom called?",
+            "answer": "nucleus",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "Do antibiotics kill viruses?",
+            "answer": "no",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "What is the process by which a liquid changes into a gas called?",
+            "answer": "evaporation",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "Which planet is known as the Red Planet?",
+            "answer": "Mars",
+            "difficulty": "Easy",
+            "category": "Science"
+        },
+        {
+            "question": "What is the approximate speed of light in vacuum in kilometers per second?",
+            "answer": "300000",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "Which blood cells help the body fight infections?",
+            "answer": "white blood cells",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "Is DNA short for deoxyribonucleic acid?",
+            "answer": "yes",
+            "difficulty": "Medium",
+            "category": "Science"
+        },
+        {
+            "question": "What is the capital city of Canada?",
+            "answer": "Ottawa",
+            "difficulty": "Easy",
+            "category": "Geography"
+        },
+        {
+            "question": "Which is the largest ocean on Earth?",
+            "answer": "Pacific Ocean",
+            "difficulty": "Easy",
+            "category": "Geography"
+        },
+        {
+            "question": "What is the longest river in South America?",
+            "answer": "Amazon River",
+            "difficulty": "Medium",
+            "category": "Geography"
+        },
+        {
+            "question": "Which country has the largest population in the world?",
+            "answer": "India",
+            "difficulty": "Medium",
+            "category": "Geography"
+        },
+        {
+            "question": "Is the Sahara Desert located in Africa?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Geography"
+        },
+        {
+            "question": "What is the capital of Japan?",
+            "answer": "Tokyo",
+            "difficulty": "Easy",
+            "category": "Geography"
+        },
+        {
+            "question": "Which continent contains the most countries?",
+            "answer": "Africa",
+            "difficulty": "Medium",
+            "category": "Geography"
+        },
+        {
+            "question": "What is the smallest independent country in the world?",
+            "answer": "Vatican City",
+            "difficulty": "Medium",
+            "category": "Geography"
+        },
+        {
+            "question": "Which mountain is the highest above sea level?",
+            "answer": "Mount Everest",
+            "difficulty": "Easy",
+            "category": "Geography"
+        },
+        {
+            "question": "Does the equator pass through Brazil?",
+            "answer": "yes",
+            "difficulty": "Medium",
+            "category": "Geography"
+        },
+        {
+            "question": "In which year did World War II end?",
+            "answer": "1945",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "Who was the first person to walk on the Moon?",
+            "answer": "Neil Armstrong",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "In which year did the Berlin Wall fall?",
+            "answer": "1989",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "Which ancient civilization built the pyramids at Giza?",
+            "answer": "Ancient Egyptians",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "Was Julius Caesar a Roman leader?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "In which year did the French Revolution begin?",
+            "answer": "1789",
+            "difficulty": "Medium",
+            "category": "History"
+        },
+        {
+            "question": "Who was the first president of the United States?",
+            "answer": "George Washington",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "Which ship famously sank in 1912 after hitting an iceberg?",
+            "answer": "Titanic",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "Did the Roman Empire exist before the Middle Ages?",
+            "answer": "yes",
+            "difficulty": "Medium",
+            "category": "History"
+        },
+        {
+            "question": "In which year did the first humans land on the Moon?",
+            "answer": "1969",
+            "difficulty": "Easy",
+            "category": "History"
+        },
+        {
+            "question": "What does CPU stand for?",
+            "answer": "Central Processing Unit",
+            "difficulty": "Easy",
+            "category": "Technology"
+        },
+        {
+            "question": "Who is commonly credited with inventing the World Wide Web?",
+            "answer": "Tim Berners-Lee",
+            "difficulty": "Medium",
+            "category": "Technology"
+        },
+        {
+            "question": "What does the abbreviation AI stand for?",
+            "answer": "Artificial Intelligence",
+            "difficulty": "Easy",
+            "category": "Technology"
+        },
+        {
+            "question": "Is Python a programming language?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Technology"
+        },
+        {
+            "question": "What does HTML stand for?",
+            "answer": "HyperText Markup Language",
+            "difficulty": "Medium",
+            "category": "Technology"
+        },
+        {
+            "question": "Which company developed the Windows operating system?",
+            "answer": "Microsoft",
+            "difficulty": "Easy",
+            "category": "Technology"
+        },
+        {
+            "question": "What does URL stand for?",
+            "answer": "Uniform Resource Locator",
+            "difficulty": "Medium",
+            "category": "Technology"
+        },
+        {
+            "question": "Is an SSD generally faster than a traditional HDD?",
+            "answer": "yes",
+            "difficulty": "Medium",
+            "category": "Technology"
+        },
+        {
+            "question": "What year was the first iPhone released?",
+            "answer": "2007",
+            "difficulty": "Medium",
+            "category": "Technology"
+        },
+        {
+            "question": "What is the name of the fictional wizarding school in the Harry Potter series?",
+            "answer": "Hogwarts",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Who wrote the play Romeo and Juliet?",
+            "answer": "William Shakespeare",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Which instrument has 88 keys on a standard modern version?",
+            "answer": "piano",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Which artist painted the Mona Lisa?",
+            "answer": "Leonardo da Vinci",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Is jazz a genre of music?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Which country is traditionally associated with the origin of sushi?",
+            "answer": "Japan",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Who wrote the novel 1984?",
+            "answer": "George Orwell",
+            "difficulty": "Medium",
+            "category": "Culture"
+        },
+        {
+            "question": "What is the name of the toy cowboy in Toy Story?",
+            "answer": "Woody",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "Which language has the most native speakers worldwide?",
+            "answer": "Mandarin Chinese",
+            "difficulty": "Medium",
+            "category": "Culture"
+        },
+        {
+            "question": "What is the name of the award given by the Academy of Motion Picture Arts and Sciences?",
+            "answer": "Oscar",
+            "difficulty": "Easy",
+            "category": "Culture"
+        },
+        {
+            "question": "How many players does one soccer team normally have on the field at the start of a match?",
+            "answer": "11",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "How many rings are on the Olympic flag?",
+            "answer": "5",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "In which sport would you perform a slam dunk?",
+            "answer": "basketball",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "Which country won the men's FIFA World Cup in 2022?",
+            "answer": "Argentina",
+            "difficulty": "Medium",
+            "category": "Sports"
+        },
+        {
+            "question": "Is Wimbledon a tennis tournament?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "How many pieces does each player start with in chess?",
+            "answer": "16",
+            "difficulty": "Medium",
+            "category": "Sports"
+        },
+        {
+            "question": "What is the term for a score of zero in tennis?",
+            "answer": "love",
+            "difficulty": "Medium",
+            "category": "Sports"
+        },
+        {
+            "question": "Which sport uses the terms strike and spare?",
+            "answer": "bowling",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "What is the maximum score with three darts in a single turn?",
+            "answer": "180",
+            "difficulty": "Medium",
+            "category": "Sports"
+        },
+        {
+            "question": "How many minutes are there in a standard soccer match, excluding added time?",
+            "answer": "90",
+            "difficulty": "Easy",
+            "category": "Sports"
+        },
+        {
+            "question": "What is the largest mammal in the world?",
+            "answer": "blue whale",
+            "difficulty": "Easy",
+            "category": "Nature"
+        },
+        {
+            "question": "Are bats mammals?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Nature"
+        },
+        {
+            "question": "What is the fastest land animal?",
+            "answer": "cheetah",
+            "difficulty": "Easy",
+            "category": "Nature"
+        },
+        {
+            "question": "What do you call an animal that eats both plants and meat?",
+            "answer": "omnivore",
+            "difficulty": "Medium",
+            "category": "Nature"
+        },
+        {
+            "question": "How many hearts does an octopus have?",
+            "answer": "3",
+            "difficulty": "Medium",
+            "category": "Nature"
+        },
+        {
+            "question": "Do penguins naturally live in the Arctic?",
+            "answer": "no",
+            "difficulty": "Medium",
+            "category": "Nature"
+        },
+        {
+            "question": "What is the hardest naturally occurring mineral?",
+            "answer": "diamond",
+            "difficulty": "Medium",
+            "category": "Nature"
+        },
+        {
+            "question": "Which tree produces acorns?",
+            "answer": "oak",
+            "difficulty": "Easy",
+            "category": "Nature"
+        },
+        {
+            "question": "What is the largest species of big cat?",
+            "answer": "tiger",
+            "difficulty": "Medium",
+            "category": "Nature"
+        },
+        {
+            "question": "Is a dolphin a fish?",
+            "answer": "no",
+            "difficulty": "Easy",
+            "category": "Nature"
+        },
+        {
+            "question": "How many sides does a hexagon have?",
+            "answer": "6",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is 12 multiplied by 12?",
+            "answer": "144",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is the square root of 81?",
+            "answer": "9",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is the name of a triangle with three equal sides?",
+            "answer": "equilateral triangle",
+            "difficulty": "Medium",
+            "category": "Mathematics"
+        },
+        {
+            "question": "Is the number 2 a prime number?",
+            "answer": "yes",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is 15 percent of 200?",
+            "answer": "30",
+            "difficulty": "Medium",
+            "category": "Mathematics"
+        },
+        {
+            "question": "How many degrees are in a right angle?",
+            "answer": "90",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is the value of pi rounded to two decimal places?",
+            "answer": "3.14",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        },
+        {
+            "question": "What is the next prime number after 7?",
+            "answer": "11",
+            "difficulty": "Medium",
+            "category": "Mathematics"
+        },
+        {
+            "question": "How many centimeters are in one meter?",
+            "answer": "100",
+            "difficulty": "Easy",
+            "category": "Mathematics"
+        }
+    ]
+}
