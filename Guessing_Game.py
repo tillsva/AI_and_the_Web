@@ -2,10 +2,7 @@ import streamlit as st
 import random 
 import streamlit as st
 from openai import OpenAI, AuthenticationError, OpenAIError
-import sys
 import json
-
-##Helper functions 
 
 #Till
 #selects a random question and removes it from the list
@@ -36,10 +33,16 @@ def next_game():
         #For the new game: generate new number, reset the won state and rerun the site
         st.session_state.number = random.randint(1, 100)
         st.session_state.guesses = 0
+        st.session_state.number_messages = [
+            {"role": "assistant", "content": "I am thinking of a number between 1 and 100. Can you guess it?"}
+        ]
     else:
         st.session_state.terminate = False
         st.session_state.won = False
         st.session_state.question, st.session_state.answer = get_question()
+        st.session_state.question_messages = [
+            {"role": "assistant", "content": st.session_state.question}
+        ]
 
 #Sarmad
 def evaluate_number(guess, number):
@@ -126,6 +129,10 @@ if "number" not in st.session_state:
     st.session_state.api_key = ""
     st.session_state.questionswon = []
     st.session_state.number_input = 50
+    st.session_state.number_messages = [
+        {"role": "assistant", "content": "I am thinking of a number between 1 and 100. Can you guess it?"}
+    ]
+    st.session_state.question_messages = []
 
     with open("general_knowledge_questions.json", "r", encoding="utf-8") as file:
         data = json.load(file)
@@ -144,7 +151,6 @@ with st.sidebar:
         on_change=save_api_key,
         placeholder="sk-...",
     ).strip()
-
 
 #Two Columns for the two kinds of games
 #Till
@@ -167,47 +173,34 @@ with col2:
         st.session_state.game_mode = "questions"
         st.rerun()
 
-#Till
+#Sarmad
 if st.session_state.game_mode == "number":
     st.header("Give me the odds")
-    st.write("Guess the randomly generated number!")
 
-    min_number = 0
-    max_number = 100
+    # Show the whole chat history
+    for msg in st.session_state.number_messages:
+        with st.chat_message(msg["role"]):
+            st.write(msg["content"])
 
-    with st.form("number_form"):
-        guess = st.number_input(
-            "Enter a number",
-            min_value=min_number,
-            max_value=max_number,
-            step=1,
-            value=50,
-            placeholder="Your guess"
-        ) 
+    # After a win, offer a new game. Otherwise wait for the next guess.
+    if st.session_state.won:
+        if st.button("Start a new game"):
+            next_game()
+            st.rerun()
+    elif guess := st.chat_input("Type your guess here"):
+        st.session_state.number_messages.append({"role": "user", "content": guess})
+        try:
+            number_guess = int(guess)
+        except ValueError:
+            st.session_state.msg = "This is not a whole number. Please type a number like 25."
+            won = False
+        else:
+            st.session_state.msg, won = evaluate_number(number_guess, st.session_state.number)
+        st.session_state.number_messages.append({"role": "assistant", "content": st.session_state.msg})
+        st.session_state.won = won
+        st.rerun()
 
-        button_str = "Submit"
-
-        #if the game is finished relabel the button and show the success message 
-        if st.session_state.won:
-            button_str = "Next Game"
-            st.success(st.session_state.msg)
-             
-        submit = st.form_submit_button(button_str)
-
-        #Logics if the submit button is clicked
-        if submit:
-            #if won is true, the submit button acts like the "next" button, therefore we have to reset the game stats and rerun the site
-            if st.session_state.won:
-                next_game()
-                st.rerun()
-            else:
-                #here is the "real" submit part, where the number is evaluated and the message and the state is safed
-                st.session_state.msg, won = evaluate_number(guess, st.session_state.number)
-                if won:
-                    st.rerun()          
-                else:
-                    st.warning(st.session_state.msg)          
-
+#Till
 elif st.session_state.game_mode == "questions":
     # pass the entered key
     client = get_client()
@@ -218,92 +211,47 @@ elif st.session_state.game_mode == "questions":
         st.stop()
 
     st.header("Questions")
-    st.write(st.session_state.question)
+    if not st.session_state.question_messages:
+        st.session_state.question_messages = [
+            {"role": "assistant", "content": st.session_state.question}
+        ]
 
-    #text forum for the answer
-    with st.form("text_form"):
-        guess = st.text_input(
-            "Enter the answer",
-            max_chars=30,
-            placeholder="Your guess"
-        )
+    # Show the whole chat history
+    for msg in st.session_state.question_messages:
+        with st.chat_message(msg["role"]):
+            st.write(msg["content"])
 
-        button_str = "Submit"
-
-        #Logic for the next question button, similar to the numbers part
-        if st.session_state.terminate:
-            button_str = "Next Question"
-            if st.session_state.won:
-                st.success(st.session_state.msg)
-                
-            elif not st.session_state.won:
-                st.warning(st.session_state.msg)
-
-        submit = st.form_submit_button(button_str)
-    
-        if submit:
-            #if terminate is true the submit button is actually the "Next Question" Button
-            if st.session_state.terminate:
-                if len(st.session_state.questions)>0:
-                    next_game()
-                    st.rerun()
-                else:
-                    st.success("All question answered! Well done!")
-                    st.stop()
-                
+    # After an answer, offer the next question. Otherwise wait for the next guess.
+    if st.session_state.terminate:
+        if st.button("Next Question"):
+            if len(st.session_state.questions) > 0:
+                next_game()
+                st.rerun()
             else:
-                #Evaluate the question
-                correct = evaluate_questions(guess, st.session_state.answer, st.session_state.question)
+                st.success("All question answered! Well done!")
+    elif guess := st.chat_input("Type your answer here"):
+        st.session_state.question_messages.append({"role": "user", "content": guess})
 
-                #If correct, safe the corresponding message, set the terminate and won states and safe the result in the winning history
-                if correct:
-                    st.session_state.msg="Right!"
-                    st.session_state.terminate = True
-                    st.session_state.won = True
-                    st.session_state.questionswon.append(True)
-                    st.rerun()
+        #Evaluate the question
+        correct = evaluate_questions(guess, st.session_state.answer, st.session_state.question)
 
-                #Explicitly asking for false for the case a error occurs and none is returned
-                elif correct==False:
-                    st.session_state.msg = f"Wrong! The answer was {st.session_state.answer}!"
-                    st.session_state.terminate = True
-                    st.session_state.won = False
-                    st.session_state.questionswon.append(False)
-                    st.rerun()
+        #If correct, safe the corresponding message, set the terminate and won states and safe the result in the winning history
+        if correct:
+            st.session_state.msg = "Right!"
+            st.session_state.terminate = True
+            st.session_state.won = True
+            st.session_state.questionswon.append(True)
+            st.session_state.question_messages.append({"role": "assistant", "content": st.session_state.msg})
+            st.rerun()
+
+        #Explicitly asking for false for the case a error occurs and none is returned
+        elif correct == False:
+            st.session_state.msg = f"Wrong! The answer was {st.session_state.answer}!"
+            st.session_state.terminate = True
+            st.session_state.won = False
+            st.session_state.questionswon.append(False)
+            st.session_state.question_messages.append({"role": "assistant", "content": st.session_state.msg})
+            st.rerun()
     
-
-
-#st.set_page_config(page_title="Talk to AI", page_icon="🤖")
-#sys.stdout.reconfigure(encoding='utf-8')
-
-# # # ── Main program logic starts here ────────────────────
-# st.title("Talk to AI")
-
-# if "messages" not in st.session_state:
-#     st.session_state.messages = []
-
-# prompt = st.text_area("Your Question")
-
-# if st.button("Submit", disabled=not prompt.strip()):
-#     try:
-#         st.session_state.messages.append({"role": "user", "content": prompt})
-
-#         with st.spinner("Answer is being created …"):
-#             response = client.chat.completions.create(
-#                 model="google/gemma-4-E4B-it",
-#                 messages=st.session_state.messages,
-#             )
-
-#         answer = response.choices[0].message.content
-#         st.session_state.messages.append({"role": "assistant", "content": answer})
-#         st.write(answer)
-
-#     except AuthenticationError:
-#         st.error("API was not accepted. Please check it.")
-
-#     except OpenAIError:
-#         st.error(
-#             "AI API request failed. Please check it and try again. "
-#         )
 
 
