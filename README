@@ -1,7 +1,7 @@
 ##Who did what: 
 In the code we assigned roughly some sections to their authors. But in general: 
 
-Sarmad: 
+Sarmad Shoaib Baig: 
 - front end for the number guessing game 
 - evaluation function of the guessing game
 - stats page for the number game
@@ -10,7 +10,7 @@ Abhimanyu Venu:
 - evaluation function for the guessing game
 - including the llm integration and text processing
 
-Till: 
+Till Svajda: 
 - front end for the question game
 - backend part like question selection for the guessing game
 - stats for the question game 
